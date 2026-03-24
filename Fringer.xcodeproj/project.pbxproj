@@ -1,0 +1,594 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1B2C3D4E5F60001 /* FringerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60010 /* FringerApp.swift */; };
+		A1B2C3D4E5F60002 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60011 /* AppDelegate.swift */; };
+		A1B2C3D4E5F60003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60012 /* Assets.xcassets */; };
+		A1B2C3D4E5F60004 /* FringerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60013 /* FringerTests.swift */; };
+		A1B2C3D4E5F60005 /* MenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60018 /* MenuBarItem.swift */; };
+		A1B2C3D4E5F60006 /* MenuBarItemDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60019 /* MenuBarItemDetector.swift */; };
+		A1B2C3D4E5F60007 /* MenuBarMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6001A /* MenuBarMonitor.swift */; };
+		A1B2C3D4E5F60008 /* PermissionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6001B /* PermissionsManager.swift */; };
+		A1B2C3D4E5F60009 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6001C /* MenuBarController.swift */; };
+		A1B2C3D4E5F6000A /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6001D /* PermissionsView.swift */; };
+		A1B2C3D4E5F6000B /* ItemArrangement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6001E /* ItemArrangement.swift */; };
+		A1B2C3D4E5F6000C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6001F /* AppState.swift */; };
+		A1B2C3D4E5F6000D /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60033 /* SettingsManager.swift */; };
+		A1B2C3D4E5F6000E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60034 /* SettingsView.swift */; };
+		A1B2C3D4E5F6000F /* MenuBarItemsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60035 /* MenuBarItemsSettingsView.swift */; };
+		A1B2C3D4E5F60036 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60037 /* GeneralSettingsView.swift */; };
+		B1C2D3E4F5A60201 /* FringerBarPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A60101 /* FringerBarPanel.swift */; };
+		B1C2D3E4F5A60202 /* FringerBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A60102 /* FringerBarContentView.swift */; };
+		B1C2D3E4F5A60203 /* HotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A60103 /* HotkeyManager.swift */; };
+		B1C2D3E4F5A60204 /* MouseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A60104 /* MouseTracker.swift */; };
+		B1C2D3E4F5A60205 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A60105 /* Preset.swift */; };
+		B1C2D3E4F5A60206 /* PresetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A60106 /* PresetManager.swift */; };
+		B1C2D3E4F5A60207 /* SearchPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A60107 /* SearchPanelView.swift */; };
+		B1C2D3E4F5A60208 /* SearchPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A60108 /* SearchPanel.swift */; };
+		B1C2D3E4F5A60209 /* PresetsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A60109 /* PresetsSettingsView.swift */; };
+		B1C2D3E4F5A6020A /* AppearanceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A6010A /* AppearanceSettingsView.swift */; };
+		B1C2D3E4F5A6020B /* HotkeySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A6010B /* HotkeySettingsView.swift */; };
+		C2D3E4F5A6B70201 /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D3E4F5A6B70101 /* Trigger.swift */; };
+		C2D3E4F5A6B70202 /* TriggerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D3E4F5A6B70102 /* TriggerManager.swift */; };
+		C2D3E4F5A6B70203 /* ShowForUpdatesTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D3E4F5A6B70103 /* ShowForUpdatesTracker.swift */; };
+		C2D3E4F5A6B70204 /* TriggerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D3E4F5A6B70104 /* TriggerSettingsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A1B2C3D4E5F60070 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1B2C3D4E5F60080 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1B2C3D4E5F60050;
+			remoteInfo = Fringer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A1B2C3D4E5F60010 /* FringerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FringerApp.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60011 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1B2C3D4E5F60013 /* FringerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FringerTests.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60014 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1B2C3D4E5F60015 /* Fringer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fringer.entitlements; sourceTree = "<group>"; };
+		A1B2C3D4E5F60016 /* Fringer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fringer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3D4E5F60017 /* FringerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FringerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3D4E5F60018 /* MenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarItem.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60019 /* MenuBarItemDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarItemDetector.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6001A /* MenuBarMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarMonitor.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6001B /* PermissionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManager.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6001C /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6001D /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6001E /* ItemArrangement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemArrangement.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6001F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60033 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60034 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60035 /* MenuBarItemsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarItemsSettingsView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60037 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5A60101 /* FringerBarPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FringerBarPanel.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5A60102 /* FringerBarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FringerBarContentView.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5A60103 /* HotkeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyManager.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5A60104 /* MouseTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseTracker.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5A60105 /* Preset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5A60106 /* PresetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetManager.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5A60107 /* SearchPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPanelView.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5A60108 /* SearchPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPanel.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5A60109 /* PresetsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsSettingsView.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5A6010A /* AppearanceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSettingsView.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5A6010B /* HotkeySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeySettingsView.swift; sourceTree = "<group>"; };
+		C2D3E4F5A6B70101 /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
+		C2D3E4F5A6B70102 /* TriggerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerManager.swift; sourceTree = "<group>"; };
+		C2D3E4F5A6B70103 /* ShowForUpdatesTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowForUpdatesTracker.swift; sourceTree = "<group>"; };
+		C2D3E4F5A6B70104 /* TriggerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerSettingsView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1B2C3D4E5F60030 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1B2C3D4E5F60031 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1B2C3D4E5F60020 /* = BEGIN listing all files belonging to the project */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F60021 /* Fringer */,
+				A1B2C3D4E5F60023 /* FringerTests */,
+				A1B2C3D4E5F60024 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F60021 /* Fringer */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F60022 /* App */,
+				A1B2C3D4E5F60028 /* MenuBar */,
+				A1B2C3D4E5F60026 /* Models */,
+				A1B2C3D4E5F60027 /* Services */,
+				A1B2C3D4E5F60029 /* Views */,
+				A1B2C3D4E5F60025 /* Resources */,
+				A1B2C3D4E5F60014 /* Info.plist */,
+				A1B2C3D4E5F60015 /* Fringer.entitlements */,
+			);
+			path = Fringer;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F60022 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F60010 /* FringerApp.swift */,
+				A1B2C3D4E5F60011 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F60023 /* FringerTests */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F60013 /* FringerTests.swift */,
+			);
+			path = FringerTests;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F60024 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F60016 /* Fringer.app */,
+				A1B2C3D4E5F60017 /* FringerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F60026 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F6001F /* AppState.swift */,
+				A1B2C3D4E5F6001E /* ItemArrangement.swift */,
+				A1B2C3D4E5F60018 /* MenuBarItem.swift */,
+				B1C2D3E4F5A60105 /* Preset.swift */,
+				C2D3E4F5A6B70101 /* Trigger.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F60027 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B1C2D3E4F5A60103 /* HotkeyManager.swift */,
+				A1B2C3D4E5F60019 /* MenuBarItemDetector.swift */,
+				A1B2C3D4E5F6001A /* MenuBarMonitor.swift */,
+				B1C2D3E4F5A60104 /* MouseTracker.swift */,
+				A1B2C3D4E5F6001B /* PermissionsManager.swift */,
+				B1C2D3E4F5A60106 /* PresetManager.swift */,
+				A1B2C3D4E5F60033 /* SettingsManager.swift */,
+				C2D3E4F5A6B70103 /* ShowForUpdatesTracker.swift */,
+				C2D3E4F5A6B70102 /* TriggerManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F60028 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				B1C2D3E4F5A60101 /* FringerBarPanel.swift */,
+				A1B2C3D4E5F6001C /* MenuBarController.swift */,
+				B1C2D3E4F5A60108 /* SearchPanel.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F60029 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B1C2D3E4F5A6010A /* AppearanceSettingsView.swift */,
+				B1C2D3E4F5A60102 /* FringerBarContentView.swift */,
+				A1B2C3D4E5F60037 /* GeneralSettingsView.swift */,
+				B1C2D3E4F5A6010B /* HotkeySettingsView.swift */,
+				A1B2C3D4E5F60035 /* MenuBarItemsSettingsView.swift */,
+				A1B2C3D4E5F6001D /* PermissionsView.swift */,
+				B1C2D3E4F5A60109 /* PresetsSettingsView.swift */,
+				B1C2D3E4F5A60107 /* SearchPanelView.swift */,
+				A1B2C3D4E5F60034 /* SettingsView.swift */,
+				C2D3E4F5A6B70104 /* TriggerSettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F60025 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F60012 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1B2C3D4E5F60050 /* Fringer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B2C3D4E5F60062 /* Build configuration list for PBXNativeTarget "Fringer" */;
+			buildPhases = (
+				A1B2C3D4E5F60040 /* Sources */,
+				A1B2C3D4E5F60030 /* Frameworks */,
+				A1B2C3D4E5F60041 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fringer;
+			productName = Fringer;
+			productReference = A1B2C3D4E5F60016 /* Fringer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A1B2C3D4E5F60051 /* FringerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B2C3D4E5F60063 /* Build configuration list for PBXNativeTarget "FringerTests" */;
+			buildPhases = (
+				A1B2C3D4E5F60042 /* Sources */,
+				A1B2C3D4E5F60031 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1B2C3D4E5F60071 /* PBXTargetDependency */,
+			);
+			name = FringerTests;
+			productName = FringerTests;
+			productReference = A1B2C3D4E5F60017 /* FringerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1B2C3D4E5F60080 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					A1B2C3D4E5F60050 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					A1B2C3D4E5F60051 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = A1B2C3D4E5F60050;
+					};
+				};
+			};
+			buildConfigurationList = A1B2C3D4E5F60061 /* Build configuration list for PBXProject "Fringer" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1B2C3D4E5F60020 /* = BEGIN listing all files belonging to the project */;
+			productRefGroup = A1B2C3D4E5F60024 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1B2C3D4E5F60050 /* Fringer */,
+				A1B2C3D4E5F60051 /* FringerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1B2C3D4E5F60041 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D4E5F60003 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1B2C3D4E5F60040 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D4E5F60001 /* FringerApp.swift in Sources */,
+				A1B2C3D4E5F60002 /* AppDelegate.swift in Sources */,
+				A1B2C3D4E5F60005 /* MenuBarItem.swift in Sources */,
+				A1B2C3D4E5F60006 /* MenuBarItemDetector.swift in Sources */,
+				A1B2C3D4E5F60007 /* MenuBarMonitor.swift in Sources */,
+				A1B2C3D4E5F60008 /* PermissionsManager.swift in Sources */,
+				A1B2C3D4E5F60009 /* MenuBarController.swift in Sources */,
+				A1B2C3D4E5F6000A /* PermissionsView.swift in Sources */,
+				A1B2C3D4E5F6000B /* ItemArrangement.swift in Sources */,
+				A1B2C3D4E5F6000C /* AppState.swift in Sources */,
+				A1B2C3D4E5F6000D /* SettingsManager.swift in Sources */,
+				A1B2C3D4E5F6000E /* SettingsView.swift in Sources */,
+				A1B2C3D4E5F6000F /* MenuBarItemsSettingsView.swift in Sources */,
+				A1B2C3D4E5F60036 /* GeneralSettingsView.swift in Sources */,
+				B1C2D3E4F5A60201 /* FringerBarPanel.swift in Sources */,
+				B1C2D3E4F5A60202 /* FringerBarContentView.swift in Sources */,
+				B1C2D3E4F5A60203 /* HotkeyManager.swift in Sources */,
+				B1C2D3E4F5A60204 /* MouseTracker.swift in Sources */,
+				B1C2D3E4F5A60205 /* Preset.swift in Sources */,
+				B1C2D3E4F5A60206 /* PresetManager.swift in Sources */,
+				B1C2D3E4F5A60207 /* SearchPanelView.swift in Sources */,
+				B1C2D3E4F5A60208 /* SearchPanel.swift in Sources */,
+				B1C2D3E4F5A60209 /* PresetsSettingsView.swift in Sources */,
+				B1C2D3E4F5A6020A /* AppearanceSettingsView.swift in Sources */,
+				B1C2D3E4F5A6020B /* HotkeySettingsView.swift in Sources */,
+				C2D3E4F5A6B70201 /* Trigger.swift in Sources */,
+				C2D3E4F5A6B70202 /* TriggerManager.swift in Sources */,
+				C2D3E4F5A6B70203 /* ShowForUpdatesTracker.swift in Sources */,
+				C2D3E4F5A6B70204 /* TriggerSettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1B2C3D4E5F60042 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D4E5F60004 /* FringerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A1B2C3D4E5F60071 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1B2C3D4E5F60050 /* Fringer */;
+			targetProxy = A1B2C3D4E5F60070 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A1B2C3D4E5F600A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1B2C3D4E5F600A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		A1B2C3D4E5F600B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Fringer/Fringer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Fringer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fringer.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A1B2C3D4E5F600B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Fringer/Fringer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Fringer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fringer.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A1B2C3D4E5F600C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fringer.FringerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fringer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Fringer";
+			};
+			name = Debug;
+		};
+		A1B2C3D4E5F600C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fringer.FringerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fringer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Fringer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1B2C3D4E5F60061 /* Build configuration list for PBXProject "Fringer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D4E5F600A1 /* Debug */,
+				A1B2C3D4E5F600A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3D4E5F60062 /* Build configuration list for PBXNativeTarget "Fringer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D4E5F600B1 /* Debug */,
+				A1B2C3D4E5F600B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3D4E5F60063 /* Build configuration list for PBXNativeTarget "FringerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D4E5F600C1 /* Debug */,
+				A1B2C3D4E5F600C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = A1B2C3D4E5F60080 /* Project object */;
+}
