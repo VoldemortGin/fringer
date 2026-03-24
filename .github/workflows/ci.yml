@@ -27,6 +27,9 @@ jobs:
       - name: Print Xcode version
         run: xcodebuild -version
 
+      - name: Clean stale results
+        run: rm -rf TestResults.xcresult
+
       - name: Build
         run: |
           xcodebuild build \
@@ -35,8 +38,7 @@ jobs:
             -destination "$DESTINATION" \
             -derivedDataPath "$DERIVED_DATA" \
             CODE_SIGN_IDENTITY="-" \
-            CODE_SIGNING_ALLOWED=NO \
-            | xcpretty --color && exit ${PIPESTATUS[0]}
+            CODE_SIGNING_ALLOWED=NO
 
       - name: Test
         run: |
@@ -47,8 +49,7 @@ jobs:
             -derivedDataPath "$DERIVED_DATA" \
             -resultBundlePath TestResults.xcresult \
             CODE_SIGN_IDENTITY="-" \
-            CODE_SIGNING_ALLOWED=NO \
-            | xcpretty --color && exit ${PIPESTATUS[0]}
+            CODE_SIGNING_ALLOWED=NO
 
       - name: Upload test results
         if: always()
