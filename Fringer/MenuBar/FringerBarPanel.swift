@@ -40,16 +40,20 @@ final class FringerBarPanel: NSPanel {
     }
 
     func showBelow(statusItem: NSStatusItem?) {
-        guard let button = statusItem?.button,
-              let buttonWindow = button.window else { return }
+        if let button = statusItem?.button,
+           let buttonWindow = button.window {
+            let buttonRect = button.convert(button.bounds, to: nil)
+            let screenRect = buttonWindow.convertToScreen(buttonRect)
 
-        let buttonRect = button.convert(button.bounds, to: nil)
-        let screenRect = buttonWindow.convertToScreen(buttonRect)
+            let x = screenRect.midX - frame.width / 2
+            let y = screenRect.minY - frame.height - 4
 
-        let x = screenRect.midX - frame.width / 2
-        let y = screenRect.minY - frame.height - 4
-
-        setFrameOrigin(NSPoint(x: x, y: y))
+            setFrameOrigin(NSPoint(x: x, y: y))
+        } else if let screen = NSScreen.main {
+            let x = screen.frame.midX - frame.width / 2
+            let y = screen.frame.maxY - frame.height - 28
+            setFrameOrigin(NSPoint(x: x, y: y))
+        }
         orderFrontRegardless()
     }
 

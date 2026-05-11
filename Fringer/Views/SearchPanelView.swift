@@ -84,6 +84,19 @@ struct SearchPanelView: View {
                     }
                 }
                 .frame(maxHeight: 200)
+            } else if items.isEmpty {
+                VStack(spacing: 8) {
+                    Image(systemName: "exclamationmark.triangle")
+                        .font(.title2)
+                        .foregroundStyle(.secondary)
+                    Text("No menu bar items detected")
+                        .font(.system(size: 13, weight: .medium))
+                    Text("Grant Accessibility and Screen Recording\npermissions in System Settings")
+                        .font(.system(size: 11))
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                }
+                .padding()
             } else if !searchText.isEmpty {
                 Text("No items found")
                     .foregroundStyle(.secondary)

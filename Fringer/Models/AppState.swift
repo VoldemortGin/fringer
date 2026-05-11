@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 @Observable
 final class AppState {
@@ -16,6 +17,7 @@ final class AppState {
     let searchPanel = SearchPanel()
 
     private var notificationObserver: Any?
+    private var permissionObservation: Any?
 
     var isSetupComplete: Bool {
         permissionsManager.allPermissionsGranted
@@ -28,9 +30,7 @@ final class AppState {
     func start() {
         menuBarController.setup()
 
-        if permissionsManager.accessibilityGranted {
-            menuBarMonitor.startMonitoring()
-        }
+        menuBarMonitor.startMonitoring()
 
         notificationObserver = NotificationCenter.default.addObserver(
             forName: .toggleFringerBar,
@@ -40,10 +40,26 @@ final class AppState {
             self?.toggleFringerBar()
         }
 
+        setupPermissionObservation()
         setupHotkeys()
         setupHoverTracking()
         setupTriggers()
         setupShowForUpdates()
+    }
+
+    private func setupPermissionObservation() {
+        permissionObservation = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { [weak self] timer in
+            guard let self else { timer.invalidate(); return }
+            let wasAccessible = self.permissionsManager.accessibilityGranted
+            self.permissionsManager.checkPermissions()
+            if self.permissionsManager.accessibilityGranted, !wasAccessible {
+                self.menuBarMonitor.refresh()
+            }
+            if self.permissionsManager.allPermissionsGranted {
+                self.menuBarMonitor.refresh()
+                timer.invalidate()
+            }
+        }
     }
 
     private func setupHotkeys() {
@@ -103,9 +119,9 @@ final class AppState {
         let hiddenItems = menuBarMonitor.items.filter {
             settingsManager.getSection(for: $0.ownerName) == .hidden
         }
-        guard !hiddenItems.isEmpty else { return }
+        let displayItems = hiddenItems.isEmpty ? menuBarMonitor.items : hiddenItems
 
-        fringerBarPanel.updateContent(items: hiddenItems) { [weak self] item in
+        fringerBarPanel.updateContent(items: displayItems) { [weak self] item in
             self?.menuBarMonitor.clickItem(item)
             self?.hideFringerBar()
         }

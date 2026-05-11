@@ -10,8 +10,11 @@ final class PermissionsManager {
         accessibilityGranted && screenRecordingGranted
     }
 
+    private var pollingTimer: Timer?
+
     init() {
         checkPermissions()
+        startPolling()
     }
 
     func checkPermissions() {
@@ -22,7 +25,6 @@ final class PermissionsManager {
     func requestAccessibility() {
         let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue(): true] as CFDictionary
         AXIsProcessTrustedWithOptions(options)
-        startPollingForAccessibility()
     }
 
     func requestScreenRecording() {
@@ -51,12 +53,15 @@ final class PermissionsManager {
         return image.width > 0
     }
 
-    private func startPollingForAccessibility() {
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+    func startPolling() {
+        pollingTimer?.invalidate()
+        guard !allPermissionsGranted else { return }
+        pollingTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { [weak self] timer in
             guard let self else { timer.invalidate(); return }
-            if AXIsProcessTrusted() {
-                self.accessibilityGranted = true
+            self.checkPermissions()
+            if self.allPermissionsGranted {
                 timer.invalidate()
+                self.pollingTimer = nil
             }
         }
     }

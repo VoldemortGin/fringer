@@ -78,12 +78,15 @@ final class MenuBarController: NSObject {
     }
 
     private func openSettings() {
-        if #available(macOS 14.0, *) {
-            NSApp.activate()
-        } else {
-            NSApp.activate(ignoringOtherApps: true)
+        NSApp.setActivationPolicy(.regular)
+        DispatchQueue.main.async {
+            if #available(macOS 14.0, *) {
+                NSApp.activate()
+            } else {
+                NSApp.activate(ignoringOtherApps: true)
+            }
+            NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
         }
-        NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
     }
 
     deinit {

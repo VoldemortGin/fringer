@@ -4,6 +4,7 @@ import SwiftUI
 struct FringerApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State private var appState = AppState()
+    @Environment(\.openSettings) private var openSettingsAction
 
     var body: some Scene {
         MenuBarExtra("Fringer", systemImage: "rectangle.topthird.inset.filled") {
@@ -36,8 +37,8 @@ struct FringerApp: App {
                 Divider()
             }
 
-            Button("Preferences...") {
-                openSettings()
+            SettingsLink {
+                Text("Preferences...")
             }
             .keyboardShortcut(",", modifiers: .command)
 
@@ -52,10 +53,5 @@ struct FringerApp: App {
         Settings {
             SettingsView(appState: appState)
         }
-    }
-
-    private func openSettings() {
-        NSApp.activate(ignoringOtherApps: true)
-        NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
     }
 }
