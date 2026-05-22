@@ -150,7 +150,8 @@ final class TriggerManager {
         let client = CWWiFiClient.shared()
         let interface = client.interface()
         let ssid = interface?.ssid()
-        let isConnected = ssid != nil
+        let powerState = interface?.powerOn() ?? false
+        let isConnected = powerState && ssid != nil
 
         for trigger in wifiTriggers {
             var shouldActivate = false
@@ -161,7 +162,8 @@ final class TriggerManager {
             case .disconnected:
                 shouldActivate = !isConnected
             case .specificNetwork:
-                if let networkName = trigger.wifiNetworkName {
+                // macOS 14+ 需要位置权限才能获取 SSID，无权限时 ssid 为 nil，跳过匹配
+                if let networkName = trigger.wifiNetworkName, let ssid {
                     shouldActivate = ssid == networkName
                 }
             case .none:

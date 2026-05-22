@@ -60,20 +60,20 @@ final class MenuBarController: NSObject {
     }
 
     func toggleHiddenSection() {
-        isHiddenSectionVisible.toggle()
-
         if isHiddenSectionVisible {
-            showHiddenSection()
-        } else {
             hideHiddenSection()
+        } else {
+            showHiddenSection()
         }
     }
 
-    private func showHiddenSection() {
+    func showHiddenSection() {
+        isHiddenSectionVisible = true
         hiddenSectionDivider?.length = expandedLength
     }
 
-    private func hideHiddenSection() {
+    func hideHiddenSection() {
+        isHiddenSectionVisible = false
         hiddenSectionDivider?.length = collapsedLength
     }
 

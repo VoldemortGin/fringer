@@ -19,6 +19,19 @@ final class FringerBarPanel: NSPanel {
         isMovableByWindowBackground = false
         collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
         animationBehavior = .utilityWindow
+        becomesKeyOnlyIfNeeded = true
+    }
+
+    override func cancelOperation(_ sender: Any?) {
+        dismiss()
+    }
+
+    override func keyDown(with event: NSEvent) {
+        if event.keyCode == 53 {
+            dismiss()
+        } else {
+            super.keyDown(with: event)
+        }
     }
 
     func updateContent(items: [MenuBarItem], onItemClick: @escaping (MenuBarItem) -> Void) {

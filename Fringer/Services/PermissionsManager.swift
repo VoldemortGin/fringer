@@ -1,13 +1,11 @@
 import AppKit
-import ApplicationServices
 
 @Observable
 final class PermissionsManager {
-    private(set) var accessibilityGranted: Bool = false
     private(set) var screenRecordingGranted: Bool = false
 
     var allPermissionsGranted: Bool {
-        accessibilityGranted && screenRecordingGranted
+        screenRecordingGranted
     }
 
     private var pollingTimer: Timer?
@@ -18,13 +16,7 @@ final class PermissionsManager {
     }
 
     func checkPermissions() {
-        accessibilityGranted = AXIsProcessTrusted()
         screenRecordingGranted = checkScreenRecordingPermission()
-    }
-
-    func requestAccessibility() {
-        let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue(): true] as CFDictionary
-        AXIsProcessTrustedWithOptions(options)
     }
 
     func requestScreenRecording() {
@@ -38,6 +30,7 @@ final class PermissionsManager {
                 []
             )
         }
+        startPollingForScreenRecording()
     }
 
     private func checkScreenRecordingPermission() -> Bool {
@@ -62,6 +55,16 @@ final class PermissionsManager {
             if self.allPermissionsGranted {
                 timer.invalidate()
                 self.pollingTimer = nil
+            }
+        }
+    }
+
+    private func startPollingForScreenRecording() {
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            guard let self else { timer.invalidate(); return }
+            if self.checkScreenRecordingPermission() {
+                self.screenRecordingGranted = true
+                timer.invalidate()
             }
         }
     }

@@ -82,15 +82,21 @@ final class SettingsManager {
 
     // Item arrangement persistence
     private let arrangementKey = "itemArrangement"
+    private var cachedArrangement: ArrangementState?
+    private var arrangementLoaded = false
 
     func saveArrangement(_ state: ArrangementState) {
+        cachedArrangement = state
         guard let data = try? JSONEncoder().encode(state) else { return }
         UserDefaults.standard.set(data, forKey: arrangementKey)
     }
 
     func loadArrangement() -> ArrangementState? {
+        if arrangementLoaded { return cachedArrangement }
+        arrangementLoaded = true
         guard let data = UserDefaults.standard.data(forKey: arrangementKey) else { return nil }
-        return try? JSONDecoder().decode(ArrangementState.self, from: data)
+        cachedArrangement = try? JSONDecoder().decode(ArrangementState.self, from: data)
+        return cachedArrangement
     }
 
     func getSection(for ownerName: String) -> MenuBarSection {

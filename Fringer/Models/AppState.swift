@@ -50,9 +50,9 @@ final class AppState {
     private func setupPermissionObservation() {
         permissionObservation = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { [weak self] timer in
             guard let self else { timer.invalidate(); return }
-            let wasAccessible = self.permissionsManager.accessibilityGranted
+            let wasGranted = self.permissionsManager.screenRecordingGranted
             self.permissionsManager.checkPermissions()
-            if self.permissionsManager.accessibilityGranted, !wasAccessible {
+            if self.permissionsManager.screenRecordingGranted, !wasGranted {
                 self.menuBarMonitor.refresh()
             }
             if self.permissionsManager.allPermissionsGranted {
@@ -126,12 +126,12 @@ final class AppState {
             self?.hideFringerBar()
         }
         fringerBarPanel.showBelow(statusItem: menuBarController.mainStatusItem)
-        menuBarController.isHiddenSectionVisible = true
+        menuBarController.showHiddenSection()
     }
 
     func hideFringerBar() {
         fringerBarPanel.dismiss()
-        menuBarController.isHiddenSectionVisible = false
+        menuBarController.hideHiddenSection()
     }
 
     func showSearch() {

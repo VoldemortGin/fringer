@@ -4,19 +4,20 @@ import SwiftUI
 struct FringerApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State private var appState = AppState()
-    @Environment(\.openSettings) private var openSettingsAction
 
     var body: some Scene {
         MenuBarExtra("Fringer", systemImage: "rectangle.topthird.inset.filled") {
             Button("Toggle Fringer Bar") {
-                appState.toggleFringerBar()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                    appState.toggleFringerBar()
+                }
             }
-            .keyboardShortcut("b", modifiers: [.command, .shift])
 
             Button("Search Menu Bar Items...") {
-                appState.showSearch()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                    appState.showSearch()
+                }
             }
-            .keyboardShortcut("b", modifiers: [.command, .option])
 
             Divider()
 
@@ -37,8 +38,12 @@ struct FringerApp: App {
                 Divider()
             }
 
-            SettingsLink {
-                Text("Preferences...")
+            Button("Preferences...") {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                    NSApp.setActivationPolicy(.regular)
+                    NSApp.activate()
+                    NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+                }
             }
             .keyboardShortcut(",", modifiers: .command)
 

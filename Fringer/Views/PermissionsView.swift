@@ -13,21 +13,14 @@ struct PermissionsView: View {
                 .font(.title2)
                 .fontWeight(.semibold)
 
-            Text("To manage your menu bar items, Fringer needs the following permissions:")
+            Text("To manage your menu bar items, Fringer needs the following permission:")
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
 
             VStack(spacing: 16) {
                 PermissionRow(
-                    title: "Accessibility",
-                    description: "Required to detect and interact with menu bar items",
-                    isGranted: permissionsManager.accessibilityGranted,
-                    action: { permissionsManager.requestAccessibility() }
-                )
-
-                PermissionRow(
                     title: "Screen Recording",
-                    description: "Required to capture menu bar item icons",
+                    description: "Required to detect and capture menu bar item icons",
                     isGranted: permissionsManager.screenRecordingGranted,
                     action: { permissionsManager.requestScreenRecording() }
                 )

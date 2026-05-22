@@ -1,6 +1,5 @@
 import AppKit
 import CoreGraphics
-import ApplicationServices
 
 final class MenuBarItemDetector {
     private var knownItems: [CGWindowID: MenuBarItem] = [:]
@@ -36,7 +35,6 @@ final class MenuBarItemDetector {
 
             guard frame.width > 1 else { continue }
 
-            let title = getAccessibilityTitle(for: ownerPID)
             let image = captureItemImage(windowID: windowID, frame: frame)
             let id = knownItems[windowID]?.id ?? UUID()
 
@@ -46,7 +44,7 @@ final class MenuBarItemDetector {
                 ownerPID: ownerPID,
                 ownerName: ownerName,
                 frame: frame,
-                title: title,
+                title: ownerName,
                 image: image,
                 isVisible: true
             )
@@ -72,63 +70,12 @@ final class MenuBarItemDetector {
         return NSImage(cgImage: cgImage, size: NSSize(width: frame.width, height: frame.height))
     }
 
-    private func getAccessibilityTitle(for pid: pid_t) -> String? {
-        let appElement = AXUIElementCreateApplication(pid)
-
-        var menuBar: CFTypeRef?
-        let result = AXUIElementCopyAttributeValue(appElement, kAXMenuBarAttribute as CFString, &menuBar)
-        guard result == .success else { return nil }
-
-        var children: CFTypeRef?
-        // swiftlint:disable:next force_cast
-        AXUIElementCopyAttributeValue(menuBar as! AXUIElement, kAXChildrenAttribute as CFString, &children)
-
-        if let items = children as? [AXUIElement], let first = items.first {
-            var title: CFTypeRef?
-            AXUIElementCopyAttributeValue(first, kAXTitleAttribute as CFString, &title)
-            return title as? String
-        }
-
-        return nil
-    }
-
     func clickItem(_ item: MenuBarItem) {
-        let appElement = AXUIElementCreateApplication(item.ownerPID)
-
-        var extrasMenuBar: CFTypeRef?
-        let result = AXUIElementCopyAttributeValue(appElement, "AXExtrasMenuBar" as CFString, &extrasMenuBar)
-
-        if result == .success, let extrasMenuBar {
-            let menuBar = extrasMenuBar as! AXUIElement // swiftlint:disable:this force_cast
-            var children: CFTypeRef?
-            AXUIElementCopyAttributeValue(menuBar, kAXChildrenAttribute as CFString, &children)
-            if let items = children as? [AXUIElement] {
-                for axItem in items {
-                    AXUIElementPerformAction(axItem, kAXPressAction as CFString)
-                    return
-                }
-            }
+        guard let app = NSRunningApplication(processIdentifier: item.ownerPID) else { return }
+        if #available(macOS 14.0, *) {
+            app.activate()
+        } else {
+            app.activate(options: [.activateIgnoringOtherApps])
         }
-
-        let clickPoint = CGPoint(
-            x: item.frame.midX,
-            y: item.frame.midY
-        )
-
-        let mouseDown = CGEvent(
-            mouseEventSource: nil,
-            mouseType: .leftMouseDown,
-            mouseCursorPosition: clickPoint,
-            mouseButton: .left
-        )
-        let mouseUp = CGEvent(
-            mouseEventSource: nil,
-            mouseType: .leftMouseUp,
-            mouseCursorPosition: clickPoint,
-            mouseButton: .left
-        )
-
-        mouseDown?.post(tap: .cghidEventTap)
-        mouseUp?.post(tap: .cghidEventTap)
     }
 }

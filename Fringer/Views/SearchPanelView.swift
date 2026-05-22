@@ -91,7 +91,7 @@ struct SearchPanelView: View {
                         .foregroundStyle(.secondary)
                     Text("No menu bar items detected")
                         .font(.system(size: 13, weight: .medium))
-                    Text("Grant Accessibility and Screen Recording\npermissions in System Settings")
+                    Text("Grant Screen Recording permission\nin System Settings")
                         .font(.system(size: 11))
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
