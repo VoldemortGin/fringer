@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Fringer — macOS App Icon</title>
+<style>
+  :root {
+    color-scheme: light;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background:
+      radial-gradient(ellipse at 50% 40%, #f4f5f8 0%, #e6e8ee 60%, #d9dce4 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", system-ui, sans-serif;
+    color: #1d1d1f;
+  }
+  .stage {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 80px 40px;
+  }
+  .icon-wrap {
+    width: 1024px;
+    height: 1024px;
+    position: relative;
+  }
+  .icon-wrap svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Preview row — show the icon at the sizes macOS actually renders it */
+  .preview {
+    margin-top: 64px;
+    display: flex;
+    align-items: flex-end;
+    gap: 56px;
+    padding: 32px 48px;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 24px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 20px 60px rgba(20,24,40,0.10);
+  }
+  .preview-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: #6b6f7a;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .preview-item svg { display: block; }
+  .preview-item.menu {
+    /* mock of an actual macOS menu bar */
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background: rgba(30,32,40,0.78);
+    color: rgba(255,255,255,0.92);
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    backdrop-filter: blur(20px);
+  }
+  .preview-item.menu svg { width: 22px; height: 22px; }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="icon-wrap" aria-label="Fringer app icon">
+      <!--
+        macOS Big Sur grid: full canvas 1024,
+        icon body sits on a 824×824 squircle inside (≈ 100px padding all round).
+      -->
+      <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+        <title id="title">Fringer — menu bar manager</title>
+
+        <defs>
+          <!--
+            Squircle path. Using a rounded-rect with large rx (~210) on an 824×824 box.
+            macOS Big Sur corner radius ≈ 22.37% of icon side; 824 × 0.2237 ≈ 184.
+            Bumped to 200 for a slightly softer, modern read. Single source of truth
+            so body, clip, and rim all match.
+          -->
+          <clipPath id="squircle-clip">
+            <rect x="100" y="100" width="824" height="824" rx="200" ry="200" />
+          </clipPath>
+
+          <!-- Body fill: deep indigo → navy, very subtle vertical falloff (icon body, not lines) -->
+          <linearGradient id="bodyFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#2A2F6E" />
+            <stop offset="55%" stop-color="#1B1F52" />
+            <stop offset="100%" stop-color="#141742" />
+          </linearGradient>
+
+          <!-- Inner top highlight — the signature Big Sur glassy rim -->
+          <linearGradient id="topHighlight" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#ffffff" stop-opacity="0.18" />
+            <stop offset="35%" stop-color="#ffffff" stop-opacity="0.04" />
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+          </linearGradient>
+
+          <!-- Cyan accent glow behind the sliding line -->
+          <radialGradient id="accentGlow" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%"  stop-color="#22E0FF" stop-opacity="0.85" />
+            <stop offset="40%" stop-color="#13B6F5" stop-opacity="0.45" />
+            <stop offset="100%" stop-color="#13B6F5" stop-opacity="0" />
+          </radialGradient>
+
+          <!-- Soft drop shadow under the whole icon -->
+          <filter id="iconShadow" x="-20%" y="-10%" width="140%" height="140%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="22" />
+            <feOffset dx="0" dy="28" result="offset" />
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="0.32" />
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          <!-- Soft glow filter for the cyan halo -->
+          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="14" />
+          </filter>
+
+          <!-- Tiny shadow under each line to give a hair of depth -->
+          <filter id="lineShadow" x="-10%" y="-50%" width="120%" height="200%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+            <feOffset dx="0" dy="2" />
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="0.45" />
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Cast shadow under the icon -->
+        <g filter="url(#iconShadow)">
+          <rect x="100" y="100" width="824" height="824" rx="200" ry="200" fill="url(#bodyFill)" />
+        </g>
+
+        <!-- Everything inside the squircle -->
+        <g clip-path="url(#squircle-clip)">
+
+          <!-- Subtle inner top sheen (Big Sur glass) -->
+          <rect x="100" y="100" width="824" height="824" fill="url(#topHighlight)" />
+
+          <!--
+            Three menu-bar lines.
+            Grid:
+              line height = 60, radius = 30 (fully pill)
+              vertical rhythm = 144px between line centers (rows at 368 / 512 / 656)
+
+            Top + bottom lines share a LEFT anchor at x=288 (the implied
+            menu-bar left edge). The middle line has been DRAGGED RIGHT,
+            so its left edge starts well past x=288 — that gap is what the
+            cyan glow fills, making the "reveal" legible.
+
+              top line:    288 → 660, length 372  (left-anchored)
+              middle line: 500 → 808, length 308  ← slid right, protrudes past the others
+              bottom line: 288 → 612, length 324  (left-anchored)
+          -->
+
+          <!-- Cyan accent: halo lives in the SLOT the middle line vacated
+               (left of x≈500) and trails under the slid line itself. -->
+          <g>
+            <!-- broad halo concentrated in the vacated slot, left of the middle line -->
+            <ellipse cx="380" cy="512" rx="260" ry="66"
+                     fill="url(#accentGlow)" filter="url(#softGlow)" opacity="1" />
+            <!-- secondary spill across the full middle row for cohesion -->
+            <ellipse cx="560" cy="512" rx="320" ry="54"
+                     fill="url(#accentGlow)" filter="url(#softGlow)" opacity="0.55" />
+          </g>
+
+          <!-- Three lines. Flat solid #ECEFF8 — no gradients. -->
+          <g fill="#ECEFF8" filter="url(#lineShadow)">
+            <!-- top line: 288 → 660 -->
+            <rect x="288" y="338" width="372" height="60" rx="30" ry="30" />
+            <!-- middle line: 500 → 808  (slid right, RIGHT edge protrudes past the others) -->
+            <rect x="500" y="482" width="308" height="60" rx="30" ry="30" />
+            <!-- bottom line: 288 → 612 -->
+            <rect x="288" y="626" width="324" height="60" rx="30" ry="30" />
+          </g>
+
+          <!-- A crisp rim line on top of the whole squircle for that Big Sur edge -->
+          <rect x="100" y="100" width="824" height="824" rx="200" ry="200"
+                fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- The preview block intentionally lives off the captured artboard -->
+  <script>
+    // Allow saving just the icon as PNG via a query string ?bare=1 (drops surrounding chrome)
+    if (new URLSearchParams(location.search).get('bare') === '1') {
+      document.body.style.background = 'transparent';
+      document.querySelector('.stage').style.padding = '0';
+    }
+  </script>
+</body>
+</html>
